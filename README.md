@@ -8,5 +8,5 @@ Team: Brody and Zoe
 #### Different types of fractal patterns
  - Koch Snowflake
  - Sierpinski Triangle
- - Sierpinski Carpet & Menger Sponge
+ - Sierpinski Carpet
  - Cantor Set
