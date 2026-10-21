@@ -10,6 +10,25 @@ import matplotlib.pyplot as plt
 from matplotlib.axes import Axes
 
 
+
+snowflake_depth = 4
+carpet_depth = 4
+cantor_depth = 6
+
+## Increase or decrease the depth (aka the recursion level)
+## you can observe that:
+# Increasing the depth, increases the complexity of the fractals.
+# Decreasing the depth brings the shaps closer to it's original geometry.
+
+
+sierpinskis_iterations = 50_000
+
+## With our implementation of Sierpinski's triangle we chose to use the
+# Chaos Game algorithm, which relies on randomness and thousands of iterative steps to reveal the shape of the fractal.
+
+
+
+
 ## Koch Snowflake
 def koch_snowflake(ax: Axes) -> None:
     """
@@ -22,6 +41,7 @@ def koch_snowflake(ax: Axes) -> None:
 
     Args:
         ax (matplotlib.axes.Axes): The subplot axis to draw on
+    Source: https://github.com/TheAlgorithms/Python/blob/master/fractals/koch_snowflake.py
     """
 
     def koch_curve(p1, p2, depth):
@@ -42,7 +62,7 @@ def koch_snowflake(ax: Axes) -> None:
     p2 = 1 + 0j
     p3 = 0.5 + (np.sqrt(3)/2) * 1j
 
-    depth = 4
+    depth = snowflake_depth
     points = (koch_curve(p1, p2, depth) + 
             koch_curve(p2, p3, depth) + 
             koch_curve(p3, p1, depth) + 
@@ -73,6 +93,7 @@ def sierpinski_triangle(ax: Axes) -> None:
     
     Args:
         ax (matplotlib.axes.Axes): The subplot axis to draw on.
+    Source: https://github.com/TheAlgorithms/Python/blob/master/fractals/sierpinski_triangle.py
     """
 
     vertices = np.array([
@@ -81,7 +102,7 @@ def sierpinski_triangle(ax: Axes) -> None:
         [0.5, np.sqrt(3)/2]
     ])
 
-    num_points = 50000
+    num_points = sierpinskis_iterations # iterations
     points = np.zeros((num_points, 2))
     current_point = vertices[0]
 
@@ -110,6 +131,7 @@ def sierpinski_carpet_plot(ax: Axes) -> None:
 
     Args:
         ax (matplotlib.axes.Axes): The subplot axis to draw on.
+    Source: https://github.com/TheAlgorithms/Python/blob/master/fractals/sierpinski_carpet.py
     """
 
     def get_carpet(depth):
@@ -122,7 +144,7 @@ def sierpinski_carpet_plot(ax: Axes) -> None:
                     carpet[x:x+step, y:y+step] = 0
         return carpet
 
-    depth = 4 
+    depth = carpet_depth
     carpet = get_carpet(depth)
 
     ax.imshow(carpet, cmap='binary')
@@ -139,6 +161,7 @@ def cantor_set(ax: Axes) -> None:
     
     Args:
         ax (matplotlib.axes.Axes): The subplot axis to draw on.
+    Source: https://q-viper.github.io/2022/08/06/making-fractal-shapes-with-python/
     """
 
     def cantor_set_recursion(x, y, length, depth):
@@ -150,7 +173,7 @@ def cantor_set(ax: Axes) -> None:
         cantor_set_recursion(x, y, new_length, depth - 1)
         cantor_set_recursion(x + 2 * new_length, y, new_length, depth - 1)
 
-    max_depth = 6
+    max_depth = cantor_depth
     for i in range(max_depth + 1):
         cantor_set_recursion(0, max_depth - i, 1, i)
 
@@ -176,7 +199,6 @@ if __name__ == "__main__":
     plt.show()
 
 
-
 ## Fractal Exploration ##
 # How fractals are formed
 # The math behind fractals
@@ -189,4 +211,3 @@ if __name__ == "__main__":
 # - Sierpinski Triangle
 # - Sierpinski Carpet & Menger Sponge
 # - Cantor Set  -- skip this one?
-
