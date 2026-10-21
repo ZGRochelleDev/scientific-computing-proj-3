@@ -6,8 +6,7 @@ Team: Brody and Zoe
  - How NumPy can be used to graph out and show different fractal patterns
 
 #### Different types of fractal patterns
- - Mandelbrot Set -- very complicated
  - Koch Snowflake
  - Sierpinski Triangle
  - Sierpinski Carpet & Menger Sponge
- - Cantor Set  -- skip this one?
+ - Cantor Set
