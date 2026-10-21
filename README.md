@@ -1,7 +1,13 @@
 Team: Brody and Zoe
 
-Project: A drunken walker - Simulate the path of some particle by starting a walker at a point over thousands of simulations.
+## Project: Fractal Exploration
+ - Explore how fractals are formed
+ - The math behind fractals
+ - How NumPy can be used to graph out and show different fractal patterns
 
-This differes from the one in class by having a single walker to pick random angles for every step, instead of 50,000 individual walks on a 2D grid (up down left right).
-
-This should result in a more interesting graph output.
+#### Different types of fractal patterns
+ - Mandelbrot Set -- very complicated
+ - Koch Snowflake
+ - Sierpinski Triangle
+ - Sierpinski Carpet & Menger Sponge
+ - Cantor Set  -- skip this one?
